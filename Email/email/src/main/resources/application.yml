@@ -1,0 +1,41 @@
+# Definindo o caminho base da aplicacao
+server:
+  port: 9001
+  servlet:
+    context-path: /email
+
+# Configuracao DataBase
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/email?useSSL=false&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true
+    username: user
+    password: senha
+  jpa:
+    hibernate:
+      ddl-auto: update
+      
+# Configuracao smtp email
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: seuEmail
+    password: senhaDeAplicativo
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+          ssl:
+            trust: "*"
+
+
+# Configuracao o rabbitMq
+  rabbitmq:
+    addresses: amqps://seuLink
+
+broker:
+  queue:
+    email:
+      name: ms.email

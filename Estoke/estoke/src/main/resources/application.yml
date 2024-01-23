@@ -1,0 +1,32 @@
+# CONFIGURANDO A PORTA DA APi
+server:
+ port: 8080
+ error:
+  include-exception: false
+
+ 
+# CONFIGURANDO DATABASE
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/estoke?useSSL=false&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true
+    username: user
+    password: senha
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+# Configuracao do RabbitMQ
+  rabbitmq:
+    addresses: amqps://seuLink
+    
+broker:
+  queue:
+    email:
+      name: ms.email
+
+# DEFININDO A CHAVE SECRETA
+security: 
+  token:
+    secret: ${JWT_SECRET:my-secret-key}
+
